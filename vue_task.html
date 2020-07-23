@@ -26,7 +26,7 @@
     </div>
 
     <select @change="getTable()" v-model="current" class="filial">
-        <option disabled>Выберите филиал</option>
+        <option value disabled selected>Выберите филиал</option>
         <option v-for="department in departmentsList">{{department}}</option>
     </select>
 

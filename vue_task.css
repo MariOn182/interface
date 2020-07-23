@@ -24,11 +24,14 @@ li {
     align-items: flex-start;
 }
 
-li select, li input, li vuejs-datepicker {
-    margin-right: 35px;
-    padding: 5px 10px;
+li select, li input, li vuejs-datepicker, .filial {
+    padding: 7px 10px;
     border-radius: 5px;
     border: 1px solid #0000003d;
+}
+
+li select, li input, li vuejs-datepicker {
+    margin-right: 35px;
 }
 
 .button {

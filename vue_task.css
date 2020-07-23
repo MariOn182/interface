@@ -28,6 +28,7 @@ li select, li input, li vuejs-datepicker, .filial {
     padding: 7px 10px;
     border-radius: 5px;
     border: 1px solid #0000003d;
+    cursor: pointer;
 }
 
 li select, li input, li vuejs-datepicker {
@@ -41,14 +42,27 @@ li select, li input, li vuejs-datepicker {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: 0.5s;
+}
+
+.button:hover {
+    background: rgba(207, 22, 22, 0.88);
 }
 
 .button_add {
     background: rgba(1, 47, 207, 0.73);
 }
 
+.button_add:hover {
+    background: rgba(1, 47, 207, 0.84);
+}
+
 .button_save {
     background: rgba(3, 141, 15, 0.73);
+}
+
+.button_save:hover {
+    background: rgba(3, 141, 15, 0.85);
 }
 
 .title {
@@ -57,6 +71,9 @@ li select, li input, li vuejs-datepicker {
     display: flex;
     justify-content: space-between;
     padding: 20px 45px 20px 70px;
+    box-shadow: 0 5px 3px -1px rgba(0, 0, 0, 0.23);
+    -webkit-box-shadow: 0 5px 3px -1px rgba(0, 0, 0, 0.23);
+    -moz-box-shadow: 0 5px 3px -1px rgba(0, 0, 0, 0.23);
 }
 
 .title, .table {

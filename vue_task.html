@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="vue_task.css">
+    <link rel="stylesheet" href="preloader.css">
+    <script src="datepicker.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+
+<div id="app">
+
+
+    <div v-if="isPreloaderActive" class="preloader">
+        <div class="block">
+            <p class="circle">
+     <span class="ouro ouro3">
+    <span class="left"><span class="anim"></span></span>
+    <span class="right"><span class="anim"></span></span>
+  </span>
+            </p>
+        </div>
+    </div>
+
+    <!-- <select @change="getTable()" v-model="current">
+    <option disabled>Выберите филиал</option>
+         <option v-for="department in departmentsList">{{department}}</option>
+     </select> -->
+
+    <ol v-for="group in groupsList">
+        <li><select v-model="group.type">
+            <option value="Утренняя">Утренняя</option>
+            <option value="Дневная">Дневная</option>
+            <option value="Вечерняя">Вечерняя</option>
+            <option value="Ночная">Ночная</option>
+        </select>
+            <vuejs-datepicker :format="'dd.MM.yyyy'"  v-model="group.startDate" :monday-first="true"></vuejs-datepicker>
+            <select multiple v-model="group.daysOfTheWeek">
+                <option value="Понедельник">Понедельник</option>
+                <option value="Вторник">Вторник</option>
+                <option value="Среда">Среда</option>
+                <option value="Четверг">Четверг</option>
+                <option value="Пятница">Пятница</option>
+                <option value="Суббота">Суббота</option>
+                <option value="Воскресение">Воскресение</option>
+            </select>
+            <select v-model="group.status">
+                <option value="Идет набор">Идет набор</option>
+                <option value="Донабор">Донабор</option>
+                <option value="Набор окончен">Набор окончен</option>
+            </select>
+            <input type="tel"
+                   v-model="group.timeLessons"
+                   name="time"
+                   id="time"
+                   placeholder="Введите время"
+                   autocomplete="tel"
+                   maxlength="14"
+                   class="form-control"
+                   v-phone
+                   pattern="[(][0-9]{3}[)] [0-9]{3}-[0-9]{4}" required />
+        </li>
+        `
+    </ol>
+    <span>Выбрано: {{current}}</span>
+</div>
+
+<script src="vue_task.js">
+</script>
+
+</body>
+</html>

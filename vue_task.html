@@ -5,17 +5,15 @@
     <link rel="stylesheet" href="vue_task.css">
     <link rel="stylesheet" href="preloader.css">
     <script src="datepicker.js"></script>
+    <script src="v-mask.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
 
 <div id="app">
-
-
     <div v-if="isPreloaderActive" class="preloader">
         <div class="block">
             <p class="circle">
@@ -63,17 +61,7 @@
                 <option value="Донабор">Донабор</option>
                 <option value="Набор окончен">Набор окончен</option>
             </select>
-            <input type="tel"
-                   v-model="group.timeLessons"
-                   name="time"
-                   id="time"
-                   placeholder="Введите время"
-                   autocomplete="tel"
-                   maxlength="14"
-                   class="form-control"
-                   v-phone
-                   pattern="[(][0-9]{3}[)] [0-9]{3}-[0-9]{4}" required/>
-            <button type="submit"class="button">Удалить</button>
+            <input type="text" v-mask="timeMask" v-model="group.timeLessons">
         </li>
         `
     </ul>

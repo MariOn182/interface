@@ -7,6 +7,7 @@
     <script src="datepicker.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
 </head>
 
@@ -26,20 +27,29 @@
         </div>
     </div>
 
-    <!-- <select @change="getTable()" v-model="current">
-    <option disabled>Выберите филиал</option>
-         <option v-for="department in departmentsList">{{department}}</option>
-     </select> -->
+    <select @change="getTable()" v-model="current" class="filial">
+        <option disabled>Выберите филиал</option>
+        <option v-for="department in departmentsList">{{department}}</option>
+    </select>
 
-    <ol v-for="group in groupsList">
-        <li><select v-model="group.type">
-            <option value="Утренняя">Утренняя</option>
-            <option value="Дневная">Дневная</option>
-            <option value="Вечерняя">Вечерняя</option>
-            <option value="Ночная">Ночная</option>
-        </select>
-            <vuejs-datepicker :format="'dd.MM.yyyy'"  v-model="group.startDate" :monday-first="true"></vuejs-datepicker>
-            <select multiple v-model="group.daysOfTheWeek">
+    <ul class="title">
+        <li>Группа</li>
+        <li>Начало обучения</li>
+        <li>Дни занятий</li>
+        <li>Время занятий</li>
+        <li>Удалить запись</li>
+    </ul>
+
+    <ul v-for="group in groupsList" class="table">
+        <li>
+            <select v-model="group.type" class="group">
+                <option value="Утренняя">Утренняя</option>
+                <option value="Дневная">Дневная</option>
+                <option value="Вечерняя">Вечерняя</option>
+                <option value="Ночная">Ночная</option>
+            </select>
+            <vuejs-datepicker :format="'dd.MM.yyyy'" v-model="group.startDate" :monday-first="true"></vuejs-datepicker>
+            <select multiple v-model="group.daysOfTheWeek" class="days">
                 <option value="Понедельник">Понедельник</option>
                 <option value="Вторник">Вторник</option>
                 <option value="Среда">Среда</option>
@@ -48,7 +58,7 @@
                 <option value="Суббота">Суббота</option>
                 <option value="Воскресение">Воскресение</option>
             </select>
-            <select v-model="group.status">
+            <select v-model="group.status" class="recruitment">
                 <option value="Идет набор">Идет набор</option>
                 <option value="Донабор">Донабор</option>
                 <option value="Набор окончен">Набор окончен</option>
@@ -62,11 +72,18 @@
                    maxlength="14"
                    class="form-control"
                    v-phone
-                   pattern="[(][0-9]{3}[)] [0-9]{3}-[0-9]{4}" required />
+                   pattern="[(][0-9]{3}[)] [0-9]{3}-[0-9]{4}" required/>
+            <button type="submit"class="button">Удалить</button>
         </li>
         `
-    </ol>
-    <span>Выбрано: {{current}}</span>
+    </ul>
+
+    <div class="control">
+        <button type="submit" class="button button_add">Добавить строку</button>
+        <button type="submit" class="button button_save">Сохранить данные</button>
+    </div>
+
+
 </div>
 
 <script src="vue_task.js">

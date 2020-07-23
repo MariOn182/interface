@@ -6,7 +6,7 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-option{
+option {
     cursor: pointer;
 }
 
@@ -38,9 +38,14 @@ li select, li input, li vuejs-datepicker, .filial {
 li select, li input, li vuejs-datepicker {
     margin-right: 35px;
 }
-select:focus, input:focus, button:focus {
+
+select:focus, input:focus {
     outline: 1px solid #66c7e3ad;
     outline-style: auto;
+}
+
+button:focus {
+    outline: none;
 }
 
 .button {
@@ -77,11 +82,22 @@ select:focus, input:focus, button:focus {
     background: rgba(0, 0, 0, 0.15);
     color: rgba(0, 0, 0, 0.61);
     display: flex;
-    justify-content: space-between;
     padding: 20px 45px 20px 70px;
     box-shadow: 0 5px 3px -1px rgba(0, 0, 0, 0.23);
     -webkit-box-shadow: 0 5px 3px -1px rgba(0, 0, 0, 0.23);
     -moz-box-shadow: 0 5px 3px -1px rgba(0, 0, 0, 0.23);
+}
+
+.title li:not(:last-child) {
+    margin-right: 140px;
+}
+
+.title li:nth-child(3){
+    margin-right: 165px;
+}
+
+.title li:nth-child(4){
+    margin-right: 110px;
 }
 
 .title, .table {

@@ -34,6 +34,9 @@ li select, li input, li vuejs-datepicker, .filial {
 li select, li input, li vuejs-datepicker {
     margin-right: 35px;
 }
+select, input {
+    outline: none;
+}
 
 .button {
     padding: 10px;

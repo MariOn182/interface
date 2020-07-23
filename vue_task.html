@@ -25,11 +25,11 @@
         </div>
     </div>
 
-    <select @change="getTable()" v-model="current" class="filial">
+    <select @change="getTable()" v-model="currentDepartment" class="filial">
         <option value disabled selected>Выберите филиал</option>
         <option v-for="department in departmentsList">{{department}}</option>
     </select>
-
+    <div v-if="isTable">
     <ul class="title">
         <li>Группа</li>
         <li>Начало обучения</li>
@@ -37,8 +37,7 @@
         <li>Время занятий</li>
         <li>Удалить запись</li>
     </ul>
-
-    <ul v-for="group in groupsList" class="table">
+    <ul v-for="(group, index) in groupsList" class="table">
         <li>
             <select v-model="group.type" class="group">
                 <option value="Утренняя">Утренняя</option>
@@ -62,15 +61,16 @@
                 <option value="Набор окончен">Набор окончен</option>
             </select>
             <input type="text" v-mask="timeMask" v-model="group.timeLessons" class="time">
-            <button type="submit" class="button">Удалить</button>
+            <button @click="deleteGroup(index)" type="button" class="button">Удалить</button>
         </li>
-        `
-    </ul>
 
-    <div class="control">
-        <button type="submit" class="button button_add">Добавить строку</button>
-        <button type="submit" class="button button_save">Сохранить данные</button>
+    </ul>
+        <div class="control">
+            <button @click="addNewGroup()" type="button" class="button button_add">Добавить строку</button>
+            <button type="submit" class="button button_save">Сохранить данные</button>
+        </div>
     </div>
+
 
 
 </div>

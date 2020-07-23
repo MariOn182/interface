@@ -6,6 +6,10 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+option{
+    cursor: pointer;
+}
+
 #app {
     display: flex;
     flex-direction: column;
@@ -34,8 +38,9 @@ li select, li input, li vuejs-datepicker, .filial {
 li select, li input, li vuejs-datepicker {
     margin-right: 35px;
 }
-select, input {
-    outline: none;
+select:focus, input:focus, button:focus {
+    outline: 1px solid #66c7e3ad;
+    outline-style: auto;
 }
 
 .button {
@@ -90,6 +95,7 @@ select, input {
 
 .days {
     margin-right: 10px;
+    height: 65px;
 }
 
 .recruitment, .group {

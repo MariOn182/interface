@@ -55,13 +55,26 @@ var app = new Vue({
         },
         addNewGroup() {
                this.groupsList.push({
-                   type:"",
+                type:"",
                 startDate: new Date(Date.now()),
                 daysOfTheWeek:[],
                 status:"",
                 timeLessons:"",} );
 
+        },
+        sendData (){
+            axios({
+                method: 'get',
+                url: this.urls.serverURL,
+                params: {
+                    department: this.currentDepartment,
+                    body: JSON.stringify(this.groupsList),
+                }
+            }).catch((error) => {
+                console.error(error + " --- error in post groups")
+            });
         }
+
     }
 
 }

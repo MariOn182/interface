@@ -7,7 +7,6 @@ var app = new Vue({
     },
     data: {
         urls: {
-
             serverURL: 'http://localhost:8080/alice/testserver',
         },
         isPreloaderActive: false,
@@ -37,7 +36,7 @@ var app = new Vue({
     methods: {
         getTable() {
             this.isPreloaderActive = true;
-            this.isTable=true;
+            this.isTable = true;
             axios({
                 method: 'get',
                 url: this.urls.serverURL,
@@ -45,17 +44,26 @@ var app = new Vue({
                     department: this.currentDepartment,
                 }
             }).then((response) => {
-                this.groupsList=response.data;
+                this.groupsList = response.data;
             }).catch((error) => {
                 console.error(error + " --- error in get table")
             });
             this.isPreloaderActive = false;
         },
-        deleteGroup(index){
+        deleteGroup(index) {
             this.groupsList.splice(index, 1);
         },
-        addNewGroup(){
+        addNewGroup() {
+               this.groupsList.push({
+                   type:"",
+                startDate: new Date(Date.now()),
+                daysOfTheWeek:[],
+                status:"",
+                timeLessons:"",} );
 
         }
     }
-});
+
+}
+
+);

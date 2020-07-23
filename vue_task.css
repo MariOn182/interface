@@ -56,14 +56,14 @@ li select, li input, li vuejs-datepicker {
     color: rgba(0, 0, 0, 0.61);
     display: flex;
     justify-content: space-between;
-    padding: 20px 55px 20px 80px;
+    padding: 20px 45px 20px 70px;
 }
 
 .title, .table {
     margin-bottom: 20px;
 }
 
-#time {
+.time {
     margin-right: 55px;
     width: 200px;
 }

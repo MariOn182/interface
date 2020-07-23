@@ -1,0 +1,74 @@
+body, ul, li {
+    margin: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    width: 1200px;
+    margin: 0 auto;
+    padding-top: 20px
+}
+
+.filial {
+    width: 500px;
+    margin: 0 auto 20px;
+}
+
+li {
+    display: flex;
+    align-items: flex-start;
+}
+
+li select, li input, li vuejs-datepicker {
+    margin-right: 35px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #0000003d;
+}
+
+.button {
+    padding: 10px;
+    background: #cf1616ba;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button_add {
+    background: rgba(1, 47, 207, 0.73);
+}
+
+.button_save {
+    background: rgba(3, 141, 15, 0.73);
+}
+
+.title {
+    background: rgba(0, 0, 0, 0.15);
+    color: rgba(0, 0, 0, 0.61);
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 55px 20px 80px;
+}
+
+.title, .table {
+    margin-bottom: 20px;
+}
+
+#time {
+    margin-right: 55px;
+    width: 200px;
+}
+
+.days {
+    margin-right: 10px;
+}
+
+.recruitment, .group {
+    width: 150px;
+}

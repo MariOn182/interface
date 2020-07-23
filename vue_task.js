@@ -1,15 +1,4 @@
-Vue.directive('phone', {
-    bind(el) {
-        el.oninput = function(e) {
-            if (!e.isTrusted) {
-                return;
-            }
-            let x = this.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-            this.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
-            el.dispatchEvent(new Event('input'));
-        }
-    }
-});
+Vue.directive('mask', VueMask.VueMaskDirective);
 
 
 
@@ -24,32 +13,30 @@ var app = new Vue({
             serverURL: 'www.google.com',
         },
         current: '',
+        timeMask: [ /[0-2]/, /[0-9]/, ':',/[0-5]/,/[0-9]/, ' - ', /[0-2]/, /[0-9]/, ':',/[0-5]/,/[0-9]/],
         departmentsList: [],
         isPreloaderActive: false,
         groupsList :[{
-            id: '1',
             type: 'Вечерняя',
             startDate: new Date(2016, 9,  16),
             daysOfTheWeek:['Понедельник','Суббота','Среда',],
             status:'Донабор',
-            timeLessons: '',
+            timeLessons: '12:40-17:25',
         },
 
             {
-            id: '1',
             type: 'Вечерняя',
-            startDate: new Date(2016, 9,  16),
-            daysOfTheWeek:['Понедельник','Суббота','Среда',],
+            startDate: new Date(2012, 3,  11),
+            daysOfTheWeek:['Понедельник','Среда',],
             status:'Донабор',
-            timeLessons: '',
+            timeLessons: '10:40-14:00',
         },
             {
-                id: '2',
                 type: 'Ночная',
                 startDate: new Date(2018, 2,  5),
                 daysOfTheWeek:['Среда'],
                 status:'Идет набор',
-                timeLessons: '',
+                timeLessons: '13:40-19:30',
             }],
     },
     created: function () {

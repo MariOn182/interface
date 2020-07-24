@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="vue_task.css">
     <link rel="stylesheet" href="preloader.css">
+    <!-- Скриптам не место в `head` -->
     <script src="datepicker.js"></script>
     <script src="v-mask.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -15,6 +16,11 @@
 
 <div id="app">
     <div v-if="isPreloaderActive" class="preloader">
+        <!--
+           Изучи BEM подход.
+           Это обширная тема. но достаточно теории про именование классов.
+           Для чего это нужно? На странице может быть где угодно еще некий "block" или "left" и иметь иное назначение и стили - верстка сломается.
+           -->
         <div class="block">
             <p class="circle">
      <span class="ouro ouro3">
@@ -27,9 +33,24 @@
 
     <select @change="getTable()" v-model="currentDepartment" class="filial">
         <option value disabled selected>Выберите филиал</option>
+        <!--
+          Вместе с `v-for` всегда должен быть прописан `key`. Он обязательно должен быть уникальным.
+          Для простоты это может быть index `v-for="(item, index) in list" :key="index"`.
+          Но могут возникнуть проблемы с реактивными данными (массивы, у которых меняются/удаляются элементы).
+          Лучше использовать уникальные значения элементов массива.
+          Это может быть id, если это объект (например пользователь).
+          Также это может быть сам элемент, если он уникальное число, либо строка.
+          -->
         <option v-for="department in departmentsList">{{department}}</option>
     </select>
     <div v-if="isTable">
+    <!--
+    Слишком общее имя класса и не подходящее по контексту. Это очевидно шапка таблицы, но никак не заглавие.
+    Понятные и уместные имена классов играют важную роль.
+    Лучший код тот, который не нуждается в объяснениях а просто читается сам собой.
+    `table-header`, `form-button-reset`
+    Не боимся длинных и многословных имен! Боимся неоднозначности и сокращений!
+    -->
     <ul class="title">
         <li>Группа</li>
         <li>Начало обучения</li>
@@ -37,6 +58,7 @@
         <li>Время занятий</li>
         <li>Удалить запись</li>
     </ul>
+    <!-- Нужен аттрибут `key` -->
     <ul v-for="(table, index) in tables" class="table">
         <li>
             <select v-model="table.group" class="group">
@@ -66,7 +88,12 @@
 
     </ul>
         <div class="control">
+            <!--
+            Не то чтобы это критично, но стоит соблюдать порядок аттрибутов, и выглядеть будет опрятнее и ориентироваться станет проще.
+            В доке вью есть огромный раздел по рекомендациям, в частности: https://ru.vuejs.org/v2/style-guide/#%D0%9F%D0%BE%D1%80%D1%8F%D0%B4%D0%BE%D0%BA-%D0%B0%D1%82%D1%80%D0%B8%D0%B1%D1%83%D1%82%D0%BE%D0%B2-%D1%8D%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82%D0%B0-%D1%80%D0%B5%D0%BA%D0%BE%D0%BC%D0%B5%D0%BD%D0%B4%D1%83%D0%B5%D1%82%D1%81%D1%8F
+            -->
             <button @click="addNewTable()" type="button" class="button button_add">Добавить строку</button>
+            <!-- Для событий не обязательно писать круглые скобки, если нет передачи аргументов -->
             <button type="button" @click="sendData()" class="button button_save">Сохранить данные</button>
         </div>
     </div>

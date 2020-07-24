@@ -6,6 +6,11 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+/*
+ * Стилизовать теги не стоит, особенно специфично, это может поломать другие элементы сайта.
+ * Исключением может быть "сброс" базовых стилей браузеров и некоторые глобальные стили на body и html тегах.
+ * В остальных случаях максимально используй классы. Это убережет от потенциальных багов и рефакторинга.
+ */
 option {
     cursor: pointer;
 }
@@ -23,11 +28,13 @@ option {
     margin: 0 auto 20px;
 }
 
+/* Стилизация тегов - плохо */
 li {
     display: flex;
     align-items: flex-start;
 }
 
+/* Стилизация тегов - плохо */
 li select, li input, li vuejs-datepicker, .filial {
     padding: 7px 10px;
     border-radius: 5px;
@@ -35,15 +42,18 @@ li select, li input, li vuejs-datepicker, .filial {
     cursor: pointer;
 }
 
+/* Стилизация тегов - плохо */
 li select, li input, li vuejs-datepicker {
     margin-right: 35px;
 }
 
+/* Стилизация тегов - плохо */
 select:focus, input:focus {
     outline: 1px solid #66c7e3ad;
     outline-style: auto;
 }
 
+/* Стилизация тегов - плохо */
 button:focus {
     outline: none;
 }

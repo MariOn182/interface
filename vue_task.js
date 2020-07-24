@@ -14,7 +14,7 @@ var app = new Vue({
         currentDepartment: '',
         timeMask: [ /[0-2]/, /[0-9]/, ':',/[0-5]/,/[0-9]/, ' - ', /[0-2]/, /[0-9]/, ':',/[0-5]/,/[0-9]/],
         departmentsList: [],
-        groupsList :[],
+        tables :[],
 
     },
     created: function () {
@@ -44,31 +44,31 @@ var app = new Vue({
                     department: this.currentDepartment,
                 }
             }).then((response) => {
-                this.groupsList = response.data;
+                this.tables=response.data.table;
             }).catch((error) => {
                 console.error(error + " --- error in get table")
             });
             this.isPreloaderActive = false;
         },
-        deleteGroup(index) {
-            this.groupsList.splice(index, 1);
+        deleteTable(index) {
+            this.tables.splice(index, 1);
         },
-        addNewGroup() {
-               this.groupsList.push({
-                type:"",
-                startDate: new Date(Date.now()),
-                daysOfTheWeek:[],
+        addNewTable() {
+               this.tables.push({
+                group:"",
+                date: new Date(Date.now()),
+                days:[],
                 status:"",
-                timeLessons:"",} );
+                time:"",} );
 
         },
         sendData (){
             axios({
-                method: 'get',
+                method: 'post',
                 url: this.urls.serverURL,
                 params: {
                     department: this.currentDepartment,
-                    body: JSON.stringify(this.groupsList),
+                    body: JSON.stringify(this.tables),
                 }
             }).catch((error) => {
                 console.error(error + " --- error in post groups")

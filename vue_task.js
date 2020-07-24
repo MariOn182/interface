@@ -34,6 +34,7 @@ var app = new Vue({
         this.isPreloaderActive = false;
     },
     methods: {
+
         getTable() {
             this.isPreloaderActive = true;
             this.isTable = true;

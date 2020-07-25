@@ -2,19 +2,18 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="vue_task.css">
-    <link rel="stylesheet" href="preloader.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/vue_task.css">
+    <link rel="stylesheet" href="css/preloader.css">
 </head>
 <body>
 
 <div id="app">
     <div v-if="isPreloaderActive" class="preloader">
-        <div class="block">
+        <div>
             <p class="circle">
      <span class="ouro ouro3">
-    <span class="left"><span class="anim"></span></span>
-    <span class="right"><span class="anim"></span></span>
+    <span class="circle__left"><span class="anim"></span></span>
+    <span class="circle__right"><span class="anim"></span></span>
   </span>
             </p>
         </div>
@@ -25,7 +24,7 @@
         <option v-for="(department, index) in departmentsList" :key="index">{{department}}</option>
     </select>
     <div v-if="isTableVisible">
-    <ul class="title">
+    <ul class="table__header">
         <li>Группа</li>
         <li>Начало обучения</li>
         <li>Дни занятий</li>
@@ -70,11 +69,11 @@
 
 </div>
 
-<script src="datepicker.js"></script>
-<script src="v-mask.min.js"></script>
+<script src="js/datepicker.js"></script>
+<script src="js/v-mask.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="vue_task.js"></script>
+<script src="js/vue_task.js"></script>
 
 </body>
 </html>

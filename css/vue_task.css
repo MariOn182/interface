@@ -2,10 +2,6 @@ body, ul, li {
     margin: 0;
 }
 
-body {
-    font-family: 'Roboto', sans-serif;
-}
-
 option {
     cursor: pointer;
 }
@@ -15,7 +11,8 @@ option {
     flex-direction: column;
     width: 1200px;
     margin: 0 auto;
-    padding-top: 20px
+    padding-top: 20px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .filial {
@@ -23,28 +20,29 @@ option {
     margin: 0 auto 20px;
 }
 
-li {
+.table li {
     display: flex;
     align-items: flex-start;
+    list-style-type: none;
 }
 
-li select, li input, li vuejs-datepicker, .filial {
+.table li select, .table li input, .table li vuejs-datepicker, .filial {
     padding: 7px 10px;
     border-radius: 5px;
     border: 1px solid #0000003d;
     cursor: pointer;
 }
 
-li select, li input, li vuejs-datepicker {
+.table li select, .table li input, .table li vuejs-datepicker {
     margin-right: 35px;
 }
 
-select:focus, input:focus {
+.table li select:focus, .table li input:focus {
     outline: 1px solid #66c7e3ad;
     outline-style: auto;
 }
 
-button:focus {
+.button:focus {
     outline: none;
 }
 
@@ -78,7 +76,7 @@ button:focus {
     background: rgba(3, 141, 15, 0.85);
 }
 
-.title {
+.table__header {
     background: rgba(0, 0, 0, 0.15);
     color: rgba(0, 0, 0, 0.61);
     display: flex;
@@ -88,19 +86,23 @@ button:focus {
     -moz-box-shadow: 0 5px 3px -1px rgba(0, 0, 0, 0.23);
 }
 
-.title li:not(:last-child) {
+.table__header li {
+    list-style-type: none;
+}
+
+.table__header li:not(:last-child) {
     margin-right: 140px;
 }
 
-.title li:nth-child(3){
+.table__header li:nth-child(3) {
     margin-right: 165px;
 }
 
-.title li:nth-child(4){
+.table__header li:nth-child(4) {
     margin-right: 110px;
 }
 
-.title, .table {
+.table__header, .table {
     margin-bottom: 20px;
 }
 
@@ -116,4 +118,11 @@ button:focus {
 
 .recruitment, .group {
     width: 150px;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400;
 }

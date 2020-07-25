@@ -37,7 +37,7 @@ option {
     margin-right: 35px;
 }
 
-.table li select:focus, .table li input:focus {
+.table li select:focus, .table li, .filial:focus {
     outline: 1px solid #66c7e3ad;
     outline-style: auto;
 }

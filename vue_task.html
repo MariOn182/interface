@@ -4,13 +4,8 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="vue_task.css">
     <link rel="stylesheet" href="preloader.css">
-    <script src="datepicker.js"></script>
-    <script src="v-mask.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
 <div id="app">
@@ -27,9 +22,9 @@
 
     <select @change="getTable()" v-model="currentDepartment" class="filial">
         <option value disabled selected>Выберите филиал</option>
-        <option v-for="department in departmentsList">{{department}}</option>
+        <option v-for="(department, index) in departmentsList" :key="index">{{department}}</option>
     </select>
-    <div v-if="isTable">
+    <div v-if="isTableVisible">
     <ul class="title">
         <li>Группа</li>
         <li>Начало обучения</li>
@@ -37,16 +32,16 @@
         <li>Время занятий</li>
         <li>Удалить запись</li>
     </ul>
-    <ul v-for="(table, index) in tables" class="table">
+    <ul  class="table" v-for="(tableRow, index) in table">
         <li>
-            <select v-model="table.group" class="group">
+            <select class="group" v-model="tableRow.group" >
                 <option value="Утренняя">Утренняя</option>
                 <option value="Дневная">Дневная</option>
                 <option value="Вечерняя">Вечерняя</option>
                 <option value="Ночная">Ночная</option>
             </select>
-            <vuejs-datepicker :format="'dd.MM.yyyy'" v-model="table.date" :monday-first="true"></vuejs-datepicker>
-            <select multiple v-model="table.days" class="days">
+            <vuejs-datepicker :format="'dd.MM.yyyy'" v-model="tableRow.date" :monday-first="true"></vuejs-datepicker>
+            <select multiple v-model="tableRow.days" class="days">
                 <option value="Понедельник">Понедельник</option>
                 <option value="Вторник">Вторник</option>
                 <option value="Среда">Среда</option>
@@ -55,19 +50,19 @@
                 <option value="Суббота">Суббота</option>
                 <option value="Воскресение">Воскресение</option>
             </select>
-            <select v-model="table.status" class="recruitment">
+            <select v-model="tableRow.status" class="recruitment">
                 <option value="Идет набор">Идет набор</option>
                 <option value="Донабор">Донабор</option>
                 <option value="Набор окончен">Набор окончен</option>
             </select>
-            <input type="text" v-mask="timeMask" v-model="table.time" class="time">
-            <button @click="deleteTable(index)" type="button" class="button">Удалить</button>
+            <input type="text" v-mask="timeMask" v-model="tableRow.time" class="time">
+            <button type="button" class="button" @click="deleteTable(index)" >Удалить</button>
         </li>
 
     </ul>
         <div class="control">
-            <button @click="addNewTable()" type="button" class="button button_add">Добавить строку</button>
-            <button type="button" @click="sendData()" class="button button_save">Сохранить данные</button>
+            <button  type="button" class="button button_add" @click="addNewTable">Добавить строку</button>
+            <button type="button"  class="button button_save" @click="sendTable">Сохранить данные</button>
         </div>
     </div>
 
@@ -75,8 +70,11 @@
 
 </div>
 
-<script src="vue_task.js">
-</script>
+<script src="datepicker.js"></script>
+<script src="v-mask.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="vue_task.js"></script>
 
 </body>
 </html>

@@ -1,61 +1,62 @@
 Vue.directive('mask', VueMask.VueMaskDirective);
+let serverURL= "http://localhost:8080/alice/testserver";
 
 var app = new Vue({
     el: '#app',
     components: {
         vuejsDatepicker,
     },
-    data: {
-        urls: {
-            serverURL: 'http://localhost:8080/alice/testserver',
-        },
+    data: function () {
+            return {
         isPreloaderActive: false,
-        isTable: false,
+         isTableVisible: false,
         currentDepartment: '',
         timeMask: [ /[0-2]/, /[0-9]/, ':',/[0-5]/,/[0-9]/, ' - ', /[0-2]/, /[0-9]/, ':',/[0-5]/,/[0-9]/],
         departmentsList: [],
-        tables :[],
+        table :[],
 
+    }
     },
-    created: function () {
-        this.isPreloaderActive = true;
-        axios({
-            method: 'get',
-            url: this.urls.serverURL,
-            params: {
-                department: "all",
-            }
-        }).then((response) => {
-            this.departmentsList = response.data;
-        }).catch((error) => {
-            console.error(error + " --- error in get departments!")
-        });
+    created: function (){this.loadDepartmetsList()},
 
-        this.isPreloaderActive = false;
-    },
     methods: {
-
-        getTable() {
+        loadDepartmetsList () {
             this.isPreloaderActive = true;
-            this.isTable = true;
             axios({
                 method: 'get',
-                url: this.urls.serverURL,
+                url: serverURL,
+                params: {
+                    department: "all",
+                }
+            }).then((response) => {
+                this.departmentsList = response.data;
+            }).catch((error) => {
+                console.error(error + " --- error in get departments!")
+            });
+
+            this.isPreloaderActive = false;
+        },
+        getTable() {
+            this.isPreloaderActive = true;
+            this.isTableVisible = true;
+            axios({
+                method: 'get',
+                url: serverURL,
                 params: {
                     department: this.currentDepartment,
                 }
             }).then((response) => {
-                this.tables=response.data.table;
+                this.table=response.data.table;
             }).catch((error) => {
                 console.error(error + " --- error in get table")
             });
             this.isPreloaderActive = false;
         },
         deleteTable(index) {
-            this.tables.splice(index, 1);
+            this.table.splice(index, 1);
         },
         addNewTable() {
-               this.tables.push({
+               this.table.push({
                 group:"",
                 date: new Date(Date.now()),
                 days:[],
@@ -63,13 +64,13 @@ var app = new Vue({
                 time:"",} );
 
         },
-        sendData (){
+        sendTable (){
             axios({
                 method: 'post',
-                url: this.urls.serverURL,
+                url: serverURL,
                 params: {
                     department: this.currentDepartment,
-                    body: JSON.stringify(this.tables),
+                    body: JSON.stringify(this.table),
                 }
             }).catch((error) => {
                 console.error(error + " --- error in post groups")

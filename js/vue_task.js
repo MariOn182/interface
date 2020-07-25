@@ -49,7 +49,10 @@ var app = new Vue({
                     department: this.currentDepartment,
                 }
             }).then((response) => {
+            //    this.departmentInfo.name=response.data.branch;
+           //     this.departmentInfo.table=response.data.table;
                 this.departmentInfo=response.data;
+
                 this.isTableVisible = true;
             }).catch((error) => {
                 console.error(error + " --- error in get table")

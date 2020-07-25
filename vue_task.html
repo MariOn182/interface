@@ -8,15 +8,12 @@
 <body>
 
 <div id="app">
+
     <div v-if="isPreloaderActive" class="preloader">
-        <div>
-            <p class="circle">
-     <span class="ouro ouro3">
-    <span class="circle__left"><span class="anim"></span></span>
-    <span class="circle__right"><span class="anim"></span></span>
-  </span>
-            </p>
-        </div>
+               <span class="circle">
+                  <span class="circle__left"><span class="anim"></span></span>
+                  <span class="circle__right"><span class="anim"></span></span>
+               </span>
     </div>
 
     <select @change="getTable()" v-model="currentDepartment" class="filial">
@@ -24,47 +21,47 @@
         <option v-for="(department, index) in departmentsList" :key="index">{{department}}</option>
     </select>
     <div v-if="isTableVisible">
-    <ul class="table__header">
-        <li>Группа</li>
-        <li>Начало обучения</li>
-        <li>Дни занятий</li>
-        <li>Время занятий</li>
-        <li>Удалить запись</li>
-    </ul>
-    <ul  class="table" v-for="(tableRow, index) in table">
-        <li>
-            <select class="group" v-model="tableRow.group" >
-                <option value="Утренняя">Утренняя</option>
-                <option value="Дневная">Дневная</option>
-                <option value="Вечерняя">Вечерняя</option>
-                <option value="Ночная">Ночная</option>
-            </select>
-            <vuejs-datepicker :format="'dd.MM.yyyy'" v-model="tableRow.date" :monday-first="true"></vuejs-datepicker>
-            <select multiple v-model="tableRow.days" class="days">
-                <option value="Понедельник">Понедельник</option>
-                <option value="Вторник">Вторник</option>
-                <option value="Среда">Среда</option>
-                <option value="Четверг">Четверг</option>
-                <option value="Пятница">Пятница</option>
-                <option value="Суббота">Суббота</option>
-                <option value="Воскресение">Воскресение</option>
-            </select>
-            <select v-model="tableRow.status" class="recruitment">
-                <option value="Идет набор">Идет набор</option>
-                <option value="Донабор">Донабор</option>
-                <option value="Набор окончен">Набор окончен</option>
-            </select>
-            <input type="text" v-mask="timeMask" v-model="tableRow.time" class="time">
-            <button type="button" class="button" @click="deleteTable(index)" >Удалить</button>
-        </li>
+        <ul class="table__header">
+            <li>Группа</li>
+            <li>Начало обучения</li>
+            <li>Дни занятий</li>
+            <li>Время занятий</li>
+            <li>Удалить запись</li>
+        </ul>
+        <ul class="table" v-for="(tableRow, index) in table">
+            <li>
+                <select class="group" v-model="tableRow.group">
+                    <option value="Утренняя">Утренняя</option>
+                    <option value="Дневная">Дневная</option>
+                    <option value="Вечерняя">Вечерняя</option>
+                    <option value="Ночная">Ночная</option>
+                </select>
+                <vuejs-datepicker :format="'dd.MM.yyyy'" v-model="tableRow.date"
+                                  :monday-first="true"></vuejs-datepicker>
+                <select multiple v-model="tableRow.days" class="days">
+                    <option value="Понедельник">Понедельник</option>
+                    <option value="Вторник">Вторник</option>
+                    <option value="Среда">Среда</option>
+                    <option value="Четверг">Четверг</option>
+                    <option value="Пятница">Пятница</option>
+                    <option value="Суббота">Суббота</option>
+                    <option value="Воскресение">Воскресение</option>
+                </select>
+                <select v-model="tableRow.status" class="recruitment">
+                    <option value="Идет набор">Идет набор</option>
+                    <option value="Донабор">Донабор</option>
+                    <option value="Набор окончен">Набор окончен</option>
+                </select>
+                <input type="text" v-mask="timeMask" v-model="tableRow.time" class="time">
+                <button type="button" class="button" @click="deleteTable(index)">Удалить</button>
+            </li>
 
-    </ul>
+        </ul>
         <div class="control">
-            <button  type="button" class="button button_add" @click="addNewTable">Добавить строку</button>
-            <button type="button"  class="button button_save" @click="sendTable">Сохранить данные</button>
+            <button type="button" class="button button_add" @click="addNewTable">Добавить строку</button>
+            <button type="button" class="button button_save" @click="sendTable">Сохранить данные</button>
         </div>
     </div>
-
 
 
 </div>

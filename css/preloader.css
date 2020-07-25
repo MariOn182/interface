@@ -10,7 +10,7 @@
     bottom: 0;
     z-index: 1001;
 }
-.ouro {
+.circle {
     position: relative;
     display:inline-block;
     height: 46px;
@@ -22,7 +22,7 @@
     box-shadow: 0 0 10px rgba(0,0,0,.1) inset, 0 0 25px rgba(0,0,255,0.075);
 }
 
-.ouro:after {
+.circle:after {
     content: "";
     position: absolute;
     top: 9px; left: 9px;
@@ -32,7 +32,7 @@
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(0,0,0,.1);
 }
-.ouro > span {
+.circle > span {
     position: absolute;
     height: 100%; width: 50%;
     overflow: hidden;
@@ -64,7 +64,7 @@
     transform-origin: 100% 50% 0;
 }
 
-.ouro3 .anim {
+.circle .anim {
     -webkit-animation-delay: 0s;
     -webkit-animation-duration:3s;
     -webkit-animation-timing-function: linear;
@@ -72,7 +72,7 @@
     animation-duration:3s;
     animation-timing-function: linear;
 }
-.ouro3 .circle__right .anim{
+.circle .circle__right .anim{
     -webkit-animation-name: ui-spinner-rotate-right;
     -webkit-animation-delay:0;
     -webkit-animation-delay: 1.5s;

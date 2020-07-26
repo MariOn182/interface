@@ -52,12 +52,12 @@ var app = new Vue({
                     }
                 }).then((response) => {
                     this.departmentInfo = response.data;
-                    if (typeof this.departmentInfo!=="object"){
-                    this.departmentInfo ={
-                        name: this.currentDepartment,
-                        table: [],
+                    if (typeof this.departmentInfo !== "object" || this.departmentInfo === null) {
+                        this.departmentInfo = {
+                            name: this.currentDepartment,
+                            table: [],
+                        }
                     }
-                 }
                     this.isTableVisible = true;
                 }).catch((error) => {
                     console.error(error + " --- error in get table")
@@ -69,6 +69,7 @@ var app = new Vue({
             },
             addNewTableRow() {
                 this.departmentInfo.table.push({
+                    //TODO реализовать поле id для :key в v-for после добавления на реальный сервер
                     group: "",
                     date: new Date(Date.now()),
                     days: [],
